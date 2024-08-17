@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteiro Fatorial</title>
+    
+</head>
+<body>
+    <script language= "JavaScript" type="text/JavaScript">
+
+        let num = prompt("Digite um número inteiro Positivo: ");
+        num = parseInt(num, 10);
+        if (Number.isInteger(num) && num > 0) {
+            let total = 0;
+            for (let i = 1; num > i; i++) {
+                total += num * i;
+            }
+            alert("O fatorial do número "+ num +" é "+ total);
+        } else {
+            alert("Número inválido");
+        }
+
+    </script>
+</body>
+</html>
