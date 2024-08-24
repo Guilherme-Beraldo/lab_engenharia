@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time Ex2</title>
+</head>
+<body>
+    
+    <script type="text/JavaScript">
+
+        function padStart() {
+
+            const agora = new Date();
+            
+            // Formata a hora, minuto e segundo com dois dígitos
+            const horas = String(agora.getHours()).padStart(2, '0');
+            const minutos = String(agora.getMinutes()).padStart(2, '0');
+            const segundos = String(agora.getSeconds()).padStart(2, '0');
+
+            // Cria a string da hora completa
+            const horaFormatada = `${horas}:${minutos}:${segundos}`;
+            
+            // Exibe a hora no elemento HTML
+            document.getElementById('relogio').textContent = horaFormatada;
+        }
+
+        padStart();
+
+        setInterval(padStart, 1000);
+
+
+    </script>
+
+    <div id="relogio">
+
+    </div>
+    
+    <a href="../../index.html">Voltar</a>
+
+</body>
+</html>
