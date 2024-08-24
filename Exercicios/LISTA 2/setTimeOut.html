@@ -9,31 +9,34 @@
     
     <script type="text/JavaScript">
 
-        function padStart() {
+        window.onload = function() {
+            function Relogio() {
 
-            const agora = new Date();
-            
-            // Formata a hora, minuto e segundo com dois dígitos
-            const horas = String(agora.getHours()).padStart(2, '0');
-            const minutos = String(agora.getMinutes()).padStart(2, '0');
-            const segundos = String(agora.getSeconds()).padStart(2, '0');
+                const agora = new Date();
+                
+                // Formata a hora, minuto e segundo com dois dígitos
+                const horas = String(agora.getHours()).padStart(2, '0');
+                const minutos = String(agora.getMinutes()).padStart(2, '0');
+                const segundos = String(agora.getSeconds()).padStart(2, '0');
 
-            // Cria a string da hora completa
-            const horaFormatada = `${horas}:${minutos}:${segundos}`;
-            
-            // Exibe a hora no elemento HTML
-            document.getElementById('relogio').textContent = horaFormatada;
+                // Cria a string da hora completa
+                const horaFormatada = `${horas}:${minutos}:${segundos}`;
+                
+                // Exibe a hora no elemento HTML
+                document.getElementById('relogio').textContent = horaFormatada;
+            }
+
+            Relogio();
+
+            setInterval(Relogio, 1000);
         }
-
-        padStart();
-
-        setInterval(padStart, 1000);
-
 
     </script>
 
-    <div id="relogio">
+    <h1 style="margin-left: 670px; margin-top: 50px; font-size: 50px;">Relógio</h1>
 
+    <div>
+        <h1 id="relogio" style="font-size: 90px; margin-left: 600px; margin-top: 80px;"></h1>
     </div>
     
     <a href="../../index.html">Voltar</a>
