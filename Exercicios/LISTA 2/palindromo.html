@@ -10,15 +10,23 @@
     <script type="text/JavaScript">
 
         window.onload = function() {
-            function palindromo(){
+            function palindromo(texto){
 
+                const stringLimpa = texto.toLowerCase().replace(/[\W_]/g, '');
 
+                const stringInvertida = stringLimpa.split('').reverse().join('');
 
-
-
-                if () {
-                    alert();
+                if (stringInvertida === stringLimpa) {
+                    alert("Essa palavra/texto é palindromo :D");
+                } else {
+                    alert("Essa palavra/texto não é palindromo :C")
                 }
+            }
+
+            document.querySelector("button").onclick = function(event) {
+                event.preventDefault(); // Previne o envio do formulário e recarregamento da página
+                const valorInput = document.getElementById("inputy").value;
+                palindromo(valorInput);
             }
         }
 
@@ -26,7 +34,7 @@
     
     <form style="display: flex; flex-direction: column;">
         <label style="margin-bottom: 5px;">Digite uma palavra ou frase</label>
-        <input type="text" style="width: 600px; height: 50px;"></input>
+        <input type="text" id="inputy" style="width: 600px; height: 50px;"></input>
         <button type="submit" style="width: 608px; margin-top: 10px;">Enviar</button>
     </form>
 
