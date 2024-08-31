@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+
+   
+    <style>
+
+        a {
+            text-decoration: none;
+            font-size: 1.5em;
+            color: rgb(38, 35, 187);
+        }
+
+        a:hover {
+            color: rgb(255, 0, 0);
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <script type="text/JavaScript">
+        window.onload = function() {
+
+        var list = document.createElement("ol");
+        document.body.appendChild(list);
+        var palavras = [];
+
+        function adicionar (event){
+
+            event.preventDefault(); // para nao recarregar a pagina ao acionar o evento
+            var palavra = document.getElementById("palavra").value;
+            
+            if (palavra) {
+
+                palavras.push(palavra);
+                palavras.sort(); // ordena os elementos da lista 
+                list.innerHTML = ""; // evita que a lista seja recriada por completo e duplique, assim adicionando apenas o elemento novo
+
+                for (var i = 0; i < palavras.length; i++) {
+                     var item = document.createElement("li");
+                     item.innerHTML = palavras[i];
+                     list.appendChild(item)          
+                 }
+
+                 document.getElementById("palavra").value = ""; // limpando o input 
+           }
+           return false; // Impede o envio do formulário
+        }
+        document.querySelector("form").onsubmit = adicionar;
+    }
+   </script>
+
+    <form>
+        <label for="palavra">Palavra:</label>
+        <input type="text" placeholder="Digite uma palavra" id="palavra"></input>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <a href="../../index.html">Voltar</a>
+</body>
+</html>

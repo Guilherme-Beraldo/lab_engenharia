@@ -1,26 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LISTAS</title>
-</head>
-<body>
-    <div>
-        <h1>Lista 1</h1>
-        <ul>
-            <li><a href="./Exercicios/LISTA 1/inteiroPosi.html">Exercicio 1 Positivo</a></li>
-            <li><a href="./Exercicios/LISTA 1/inteiroPrimo.html">Exercicio 2 Primo</a></li>
-            <li><a href="./Exercicios/LISTA 1/inteiroFatorial.html">Exercicio 3 Fatorial</a></li>
-            <li><a href="./Exercicios/LISTA 1/tipoDado.html">Exercicio 4 Tipo</a></li>
-        </ul>
 
-        <h1>Lista 2</h1>
-        <ul>
-            <li><a href="./Exercicios/LISTA 2/dataAtual.html">Exercicio 1 Data</a></li>
-            <li><a href="./Exercicios/LISTA 2/setTimeOut.html">Exercicio 2 Relógio</a></li>
-            <li><a href="./Exercicios/LISTA 2/palindromo.html">Exercicio 3 Palindromo</a></li>
-        </ul>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body {
+            background-color: #f8f9fa; /* Cor de fundo suave */
+        }
+
+        #principal {
+            display: flex;
+            flex-direction: row;
+            gap: 100px;
+        }
+
+        .lista {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1;
+            min-width: 250px; /* Largura mínima para manter o layout */
+        }
+
+        .lista h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Cor do título */
+        }
+
+        .lista ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lista ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .lista ul li a {
+            text-decoration: none;
+            color: #323232e2;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .lista ul li a:hover {
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 1200px; /* Largura máxima da página */
+        }
+
+    </style>
+
+</head>
+
+<body class="container mt-5">
+    <div id="principal">
+
+        <div class="lista">
+            <h1>Lista 1</h1>
+            <ul>
+                <li><a href="./Exercicios/LISTA 1/inteiroPosi.html">Exercicio 1 Positivo</a></li>
+                <li><a href="./Exercicios/LISTA 1/inteiroPrimo.html">Exercicio 2 Primo</a></li>
+                <li><a href="./Exercicios/LISTA 1/inteiroFatorial.html">Exercicio 3 Fatorial</a></li>
+                <li><a href="./Exercicios/LISTA 1/tipoDado.html">Exercicio 4 Tipo</a></li>
+            </ul>
+        </div>
+        <div class="lista">
+            <h1>Lista 2</h1>
+            <ul>
+                <li><a href="./Exercicios/LISTA 2/dataAtual.html">Exercicio 1 Data</a></li>
+                <li><a href="./Exercicios/LISTA 2/setTimeOut.html">Exercicio 2 Relógio</a></li>
+                <li><a href="./Exercicios/LISTA 2/palindromo.html">Exercicio 3 Palindromo</a></li>
+            </ul>
+        </div>
+        <div class="lista">
+            <h1>Lista 3</h1>
+            <ul>
+                <li><a href="./Exercicios/LISTA 3/lista.html">Exercicio 1 Lista</a></li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
