@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluno / Professor</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        #formulario {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px;
+            max-width: 600px;
+            height: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #000;
+            grid-column: span 3;
+        }
+
+        label {
+            font-size: 10px;
+            color: #222;
+            opacity: 90%;
+        }
+
+        input {
+            font-size: 12px;
+            color: #999;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        button {
+            font-size: 12px;
+            background-color: #eee;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            padding: 5px 20px;
+        }
+
+        .erro {
+            color: rgb(239, 70, 70);
+            font-size: 12px;
+            display: none;
+        }
+
+        .campos input {
+            width: 100%;
+        }
+
+        .tamanho1 {
+            grid-column: span 3;
+        }
+
+        .tamanho2 {
+            grid-column: span 2;
+        }
+
+        .tamanho3 {
+            grid-column: span 1;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flex input {
+            width: 20%;
+            margin-bottom: 5px;
+        }
+
+        .botoes {
+            margin: auto;
+        }
+        
+        .botoes button {
+            margin: 10px 20px;
+        }
+
+        a {
+            margin-top: 100px;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+
+    <form id="formulario">
+        <h1>Formulário de Cadastro: </h1>
+        <div class="campos tamanho1">
+            <label>Nome: </label>
+            <input type="text" id="nome" required placeholder="Digite seu nome completo aqui">
+            <div id="erroNome" class="erro">Nome Invalido (mínimo de 3 caracteres)</div>
+        </div>
+        <div class="campos tamanho2">
+            <label>Email: </label>
+            <input type="email" id="email" required placeholder="fulano@gmail.com">
+            <div id="erroEmail" class="erro">Email Inválido</div>
+        </div>
+        <div class="campos tamanho3">
+            <label>Data Nascimento: </label>
+            <input type="date" id="dataNasc" required>
+            <div id="erroData" class="erro">Data Inválida</div>
+        </div>
+        <div class="campos tamanho3">
+            <label>Telefone Fixo: </label>
+            <input type="text" id="fixo" required placeholder="(99)9999-9999">
+            <div id="erroFixo" class="erro">Telefone Inválido</div>
+        </div>
+        <div class="campos tamanho3">
+            <label>Telefone Celular: </label>
+            <input type="text" id="celular" required placeholder="(99)99999-9999">
+            <div id="erroCelular" class="erro">Telefone Celular Inválido</div>
+        </div>
+        <div class="campos flex">
+            <label>
+                <input type="radio" name="categoria" value="professor"> Professor
+            </label>
+        
+            <label>
+                <input type="radio" name="categoria" value="aluno" checked> Aluno
+            </label>
+        </div>
+        <div class="campos tamanho2 curso">
+            <label>Curso: </label>
+            <input type="text" id="curso" required placeholder="Digite seu curso">
+            <div id="erroCurso" class="erro">Curso Inválido</div>
+        </div>
+        <div class="campos tamanho3 matricula">
+            <label>Matricula </label>
+            <input type="number" id="matricula" required placeholder="Digite sua matrícula">
+            <div id="erroMatricula" class="erro">Matrícula Inválida</div>
+        </div>
+        <div class="campos tamanho1 botoes">
+            <button type="submit">Enviar</button>
+            <button type="submit">Redefinir</button>
+        </div>
+       
+    </form>
+
+    <a href="../../index.html">Voltar</a>
+
+
+
+
+
+    <script type="text/JavaScript">
+
+        document.addEventListener('DOMContentLoaded', function () {
+  
+          function Pessoa () {
+              var nome;
+              var email;
+              var dataNasc;
+              var fixo;
+              var celular;
+              var tipo;
+              var matricula;
+  
+              this.getNome = function() {
+                  return nome;
+              };
+              this.setNome = function(valor) {
+                  nome = valor;
+              };
+  
+              this.getEmail = function() {
+                  return email;
+              };
+              this.setEmail = function(valor) {
+                  email = valor;
+              };
+  
+              this.getDataNasc = function() {
+                  return dataNasc;
+              };
+              this.setDataNasc = function(valor) {
+                  dataNasc = valor;
+              };
+  
+              this.getFixo = function() {
+                  return fixo;
+              };
+              this.setFixo = function(valor) {
+                  fixo = valor;
+              };
+  
+              this.getCelular = function() {
+                  return celular;
+              };
+              this.setCelular = function(valor) {
+                  celular = valor;
+              };
+  
+              this.getTipo = function() {
+                  return tipo;
+              };
+              this.setTipo = function(valor) {
+                  tipo = valor;
+              };
+  
+              this.getMatricula = function() {
+                  return matricula;
+              }
+              this.setMatricula = function(valor) {
+                  matricula = valor;
+              }
+          }
+  
+          function Aluno () {
+  
+              Pessoa.call(this);
+  
+              var curso;
+          }
+  
+          function Professor () {
+              Pessoa.call(this);
+  
+              var area;
+              var lattes;
+          }
+  
+          /* FIM DAS CLASSES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+  
+           const professorRadio = document.querySelector('input[name="categoria"][value="professor"]');
+           const alunoRadio = document.querySelector('input[name="categoria"][value="aluno"]');
+           const cursoDiv = document.querySelector('.curso');
+           const matriculaDiv = document.querySelector('.matricula');
+           const form = document.getElementById('formulario');
+  
+           function criarCamposProfessor() {
+  
+                  const areaDiv = document.createElement('div');
+                  areaDiv.classList.add('campos', 'tamanho2', 'area');
+                  areaDiv.innerHTML = `
+                      <label>Área: </label>
+                      <input type="text" id="area" required placeholder="Digite sua área de atuação">
+                      <div id="erroArea" class="erro">Área Inválida</div>
+                  `;
+  
+                  const matriculaProfDiv = document.createElement('div');
+                  matriculaProfDiv.classList.add('campos', 'tamanho3', 'matriculaProf');
+                  matriculaProfDiv.innerHTML = `
+                      <label>Mátricula: </label>
+                      <input type="number" id="matriculaProf" required placeholder="Digite sua matrícula">
+                      <div id="erroMatriculaProf" class="erro">Matrícula Inválida</div>
+                  `;
+  
+                  const lattesDiv = document.createElement('div');
+                  lattesDiv.classList.add('campos', 'tamanho1', 'lattes');
+                  lattesDiv.innerHTML = `
+                      <label>LATTES: </label>
+                      <input type="text" id="lattes" required placeholder="Digite o link do seu LATTES">
+                      <div id="erroLattes" class="erro">Lattes Inválido</div>
+                  `;
+  
+                  form.insertBefore(areaDiv, form.querySelector('.botoes'));
+                  form.insertBefore(matriculaProfDiv, form.querySelector('.botoes'));
+                  form.insertBefore(lattesDiv, form.querySelector('.botoes'));
+
+                  document.getElementById('matriculaProf').addEventListener('blur', validarMatriculaProf);  
+                  document.getElementById('area').addEventListener('blur', validarArea);  
+                  document.getElementById('lattes').addEventListener('blur', validarLattes);  
+              }
+  
+  
+              function removerCamposProfessor() {
+  
+                  const areaDiv = document.querySelector('.area');
+                  const matriculaProfDiv = document.querySelector('.matriculaProf');
+                  const lattesDiv = document.querySelector('.lattes');
+  
+                  if (areaDiv) form.removeChild(areaDiv);
+                  if (matriculaProfDiv) form.removeChild(matriculaProfDiv);
+                  if (lattesDiv) form.removeChild(lattesDiv);
+              }
+  
+  
+              function alternarCampos() {
+                  if (professorRadio.checked) {
+                      cursoDiv.style.display = 'none';
+                      matriculaDiv.style.display = 'none';
+                      criarCamposProfessor();
+                  } else {
+                      cursoDiv.style.display = 'block';
+                      matriculaDiv.style.display = 'block';
+                      removerCamposProfessor();
+                  }
+              }
+  
+              professorRadio.addEventListener('change', alternarCampos);
+              alunoRadio.addEventListener('change', alternarCampos);
+  
+      }); /*FIM DO DOM ONLOAD */
+
+       /* VALIDANDO OS CAMPOS, USANDO ONBLUR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+  
+       function validarNome(){
+                  const nomeInput = document.getElementById('nome');
+                  const erroNome = document.getElementById('erroNome');
+                  if (nomeInput.value.trim() === "" || nomeInput.value.length < 3) {
+                      erroNome.style.display = 'block';
+                      return false;
+                  } else {
+                      erroNome.style.display = 'none';
+                      return true;
+                  }
+              }
+
+              function validarEmail() {
+                const emailInput = document.getElementById('email');
+                const erroEmail = document.getElementById('erroEmail');
+                const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!regex.test(emailInput.value.trim())) {
+                    erroEmail.style.display = 'block';
+                    return false;
+                } else {
+                    erroEmail.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarDataNasc() {
+                const dataNascInput = document.getElementById('dataNasc');
+                const erroData = document.getElementById('erroData');
+                if (!dataNascInput.value.trim()) {
+                    erroData.style.display = 'block';
+                    return false;
+                } else {
+                    erroData.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarFixo() {
+                const fixoInput = document.getElementById('fixo');
+                const erroFixo = document.getElementById('erroFixo');
+                const regex = /^\(\d{2}\)\d{4}-\d{4}$/;
+                if (!regex.test(fixoInput.value.trim())) {
+                    erroFixo.style.display = 'block';
+                    return false;
+                } else {
+                    erroFixo.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarCelular() {
+                const celularInput = document.getElementById('celular');
+                const erroCelular = document.getElementById('erroCelular');
+                const regex = /^\(\d{2}\)\d{5}-\d{4}$/;
+                if (!regex.test(celularInput.value.trim())) {
+                    erroCelular.style.display = 'block';
+                    return false;
+                } else {
+                    erroCelular.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarCurso() {
+                const cursoInput = document.getElementById('curso');
+                const erroCurso = document.getElementById('erroCurso');
+                if (cursoInput.value.trim() === "") {
+                    erroCurso.style.display = 'block';
+                    return false;
+                } else {
+                    erroCurso.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarMatricula() {
+                const matriculaInput = document.getElementById('matricula');
+                const erroMatricula = document.getElementById('erroMatricula');
+                if (isNaN(matriculaInput.value.trim()) || matriculaInput.value.trim() === "") {
+                    erroMatricula.style.display = 'block';
+                    return false;
+                } else {
+                    erroMatricula.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarMatriculaProf() {
+                const matriculaInput = document.getElementById('matriculaProf');
+                const erroMatricula = document.getElementById('erroMatriculaProf');
+                if (isNaN(matriculaInput.value.trim()) || matriculaInput.value.trim() === "") {
+                    erroMatricula.style.display = 'block';
+                    return false;
+                } else {
+                    erroMatricula.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarArea() {
+                const areaInput = document.getElementById('area');
+                const erroArea = document.getElementById('erroArea');
+                if (areaInput.value.trim() === "") {
+                    erroArea.style.display = 'block';
+                    return false;
+                } else {
+                    erroArea.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validarLattes() {
+                const lattesInput = document.getElementById('lattes');
+                const erroLattes = document.getElementById('erroLattes');
+                const regex = /^(http:\/\/|https:\/\/).+$/;
+                if (!regex.test(lattesInput.value.trim())) {
+                    erroLattes.style.display = 'block';
+                    return false;
+                } else {
+                    erroLattes.style.display = 'none';
+                    return true;
+                }
+            }
+
+
+
+            document.getElementById('nome').addEventListener('blur', validarNome);
+            document.getElementById('email').addEventListener('blur', validarEmail);
+            document.getElementById('dataNasc').addEventListener('blur', validarDataNasc);
+            document.getElementById('fixo').addEventListener('blur', validarFixo);
+            document.getElementById('celular').addEventListener('blur', validarCelular);
+            document.getElementById('curso').addEventListener('blur', validarCurso);
+            document.getElementById('matricula').addEventListener('blur', validarMatricula); 
+
+      </script>
+</body>
+</html>
