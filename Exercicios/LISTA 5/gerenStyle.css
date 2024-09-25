@@ -1,0 +1,8 @@
+.concluida {
+    color: green;
+    text-decoration: line-through;
+}
+
+.forte {
+    font-weight: 700;
+}
